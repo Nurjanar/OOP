@@ -7,9 +7,9 @@ data class Post(
     val authorId: Long = 0,
     val authorName: String = "Incognita",
     val date: Int = 0,
-    val content: String = "",
+    val content: String?,
     val canDelete: Boolean = true,
     val canEdit: Boolean = true,
     val likes: Int = 0,
-    val comments: Comments
+    val comments: Comments?
 )
