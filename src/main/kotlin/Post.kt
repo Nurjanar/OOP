@@ -11,5 +11,6 @@ data class Post(
     val canDelete: Boolean = true,
     val canEdit: Boolean = true,
     val likes: Int = 0,
-    val comments: Comments?
+    val comments: Comments?,
+    var attachments: Array<Attachment> = emptyArray()
 )
