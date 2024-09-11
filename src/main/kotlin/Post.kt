@@ -7,10 +7,10 @@ data class Post(
     val authorId: Long = 0,
     val authorName: String = "Incognita",
     val date: Int = 0,
-    val content: String?,
     val canDelete: Boolean = true,
     val canEdit: Boolean = true,
     val likes: Int = 0,
+    val content: String?,
     val comments: Comments?,
-    var attachments: Array<Attachment> = emptyArray()
+    val attachments: Array<Attachment> = emptyArray()
 )

@@ -1,40 +1,48 @@
-abstract class Attachment(
+sealed class Attachment(
     val type: String
 )
 
 data class Video(
-    val id: Int,
-    val ownerId: Int,
+    val id: Int = 1,
+    val ownerId: Int = 1,
     val title: String,
     val duration: Int
 )
 
-data class VideoAttachment(val video: Video) : Attachment("video")
+data class VideoAttachment(
+    val video: Video
+) : Attachment("video")
 
 data class Audio(
     val id: Int = 1,
     val ownerId: Int = 1,
+    val duration: Int = 1,
     val title: String,
-    val artist: String,
-    val duration: Int = 1
+    val artist: String
 )
 
-data class AudioAttachment(val audio: Audio) : Attachment("audio")
+data class AudioAttachment(
+    val audio: Audio
+) : Attachment("audio")
 
 data class Photo(
     val id: Int = 1,
     val ownerId: Int = 1,
-    val text: String,
-    val date: Int = 1
+    val date: Int = 1,
+    val text: String
 )
 
-data class PhotoAttachment(val photo: Photo) : Attachment("photo")
+data class PhotoAttachment(
+    val photo: Photo
+) : Attachment("photo")
 
 data class File(
-    val id: Int,
-    val ownerId: Int,
+    val id: Int = 1,
+    val ownerId: Int = 1,
     val title: String,
-    val size: Int
+    val size: Int = 2
 )
 
-data class FileAttachment(val file: File) : Attachment("file")
+data class FileAttachment(
+    val file: File
+) : Attachment("file")
