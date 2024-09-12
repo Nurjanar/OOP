@@ -52,6 +52,7 @@ fun main() {
             is PhotoAttachment -> "photo"
             is VideoAttachment -> "video"
             is FileAttachment -> "file"
+            is MemesAttachment -> "memes"
         }
         println(result)
     }

@@ -46,3 +46,11 @@ data class File(
 data class FileAttachment(
     val file: File
 ) : Attachment("file")
+
+data class Memes(
+    val id: Int,
+    val ownerId: Int
+)
+
+data class MemesAttachment(val memes: Memes) :
+    Attachment("memes")
