@@ -3,7 +3,7 @@ fun main() {
     WallService.add(
         Post(
             1, content = "Hello everyone!",
-            comments = Comments("Hello my friend!"),
+            comments = Comments(),
             attachments = arrayOf(
                 AudioAttachment(
                     Audio(
@@ -19,17 +19,24 @@ fun main() {
             )
         )
     )
+    WallService.createComment(
+        1, comment = Comments("Hello my friend!")
+    )
 
     WallService.add(
         Post(
-            2, content = "Who wants to go to the cinema tonight?",
-            comments = Comments("I'll go")
+            2, content = "Who goes with me to the cinema tonight?",
+            comments = Comments()
         )
     )
+    WallService.createComment(
+        2, comment = Comments("I will")
+    )
+    WallService.showPosts()
     val post =
         Post(
             2, content = "Interstellar at 20:30",
-            comments = Comments("let`s go"),
+            comments = Comments(),
             attachments = arrayOf(
                 VideoAttachment(
                     Video(
@@ -45,7 +52,7 @@ fun main() {
             )
         )
     WallService.update(post)
-    WallService.showPosts()
+
     for (attachment in post.attachments) {
         val result = when (attachment) {
             is AudioAttachment -> "audio"
@@ -61,4 +68,11 @@ fun main() {
         audio = Audio(title = "test", artist = "1")
     )
     println(attachment.type)
+    WallService.showPosts()
+
+
+    WallService.createComment(
+        5, comment = Comments("Let's go!!!")
+    )
+    WallService.showPosts()
 }
