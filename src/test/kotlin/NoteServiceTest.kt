@@ -39,7 +39,7 @@ class NoteServiceTest {
 
     @Test(expected = CommentNotFoundException::class)
     fun getComments() {
-        service.getComments(5)
+        service.getComments(1)
     }
 
     @Test

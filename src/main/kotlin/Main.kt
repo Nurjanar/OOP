@@ -94,5 +94,4 @@ fun main() {
     NoteService.restoreComment(1, 1)
     NoteService.deleteNote(1)
     NoteService.read()
-
 }

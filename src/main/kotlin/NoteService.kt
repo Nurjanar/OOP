@@ -122,5 +122,6 @@ object NoteService {
     fun clear() {
         notes.clear()
         lastId = 0
+        nextId = 0
     }
 }
