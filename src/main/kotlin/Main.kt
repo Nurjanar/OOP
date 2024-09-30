@@ -71,8 +71,28 @@ fun main() {
     WallService.showPosts()
 
 
-    WallService.createComment(
-        5, comment = Comments("Let's go!!!")
+    NoteService.addNote(
+        Note(
+            "Угадайте у кого сегодня др?",
+            "У лягушки-квакушки!", comments = Comments()
+        )
     )
-    WallService.showPosts()
+
+    NoteService.createComment(1, "Надо же!")
+    NoteService.read()
+    NoteService.editNote(
+        1, "Те,кто угадал--->",
+        "Приходите праздновать!"
+    )
+
+    NoteService.createComment(1, "Урааа!")
+    NoteService.read()
+    NoteService.editComment(1, 1, "С ума сойти!")
+    println(NoteService.getComments(1))
+    NoteService.deleteComment(1, 1)
+    println(NoteService.getComments(1))
+    NoteService.restoreComment(1, 1)
+    NoteService.deleteNote(1)
+    NoteService.read()
+
 }

@@ -28,7 +28,7 @@ class WallServiceTest {
                 comments = Comments()
             )
         )
-        val result = post.id
+        val result = post.postId
         assertEquals(3, result)
     }
 

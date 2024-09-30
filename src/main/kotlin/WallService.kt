@@ -5,15 +5,14 @@ object WallService {
 
     fun add(post: Post): Post {
         posts += post.copy(
-            id = ++lastId,
-            comments = post.comments?.copy(id = lastId)
+            postId = ++lastId
         )
         return posts.last()
     }
 
     fun update(newPost: Post): Boolean {
         for ((index, post) in posts.withIndex()) {
-            if (posts[index].id == newPost.id) {
+            if (posts[index].postId == newPost.postId) {
                 posts[index] = newPost.copy(
                     comments = posts[index].comments
                 )
@@ -24,7 +23,7 @@ object WallService {
     }
 
     fun getComments(postId: Int): List<Comments> {
-        return comments.filter { it.postId == postId }
+        return comments.filter { it.id == postId }
     }
 
     fun showPosts() {
@@ -40,18 +39,18 @@ object WallService {
 
     @Throws(PostNotFoundException::class)
     fun createComment(postId: Int, comment: Comments): Comments? {
-        if (postId == 0 || posts.size < postId) {
+        if (postId <= 0 || posts.size < postId) {
             throw PostNotFoundException()
         }
         val newComment = Comments(
-            id = comments.size + 1,
-            postId = postId,
+            commentId = comments.size + 1,
+            id = postId,
             text = comment.text
         )
         for ((index, post) in posts.withIndex()) {
-            if (posts[index].id == postId) {
+            if (posts[index].postId == postId) {
                 comments += newComment
-                val result = getComments(postId = post.id)
+                val result = getComments(postId = post.postId)
                 posts[index].comments?.text = result.toString()
             }
         }
